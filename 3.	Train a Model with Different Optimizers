@@ -1,0 +1,49 @@
+import tensorflow as tf
+import matplotlib.pyplot as plt
+
+# Step 1: Load the MNIST dataset
+mnist = tf.keras.datasets.mnist
+(x_train, y_train), (x_test, y_test) = mnist.load_data()
+
+# Normalize pixel values to range [0,1]
+x_train, x_test = x_train / 255.0, x_test / 255.0
+
+# Step 2: Define a simple neural network model
+def create_model():
+    model = tf.keras.models.Sequential([
+        tf.keras.layers.Flatten(input_shape=(28, 28)),  # Flatten 28x28 images
+        tf.keras.layers.Dense(128, activation='relu'),
+        tf.keras.layers.Dense(10, activation='softmax')  # Output layer with 10 classes
+    ])
+    return model
+
+# Step 3: Train models with Adam and SGD
+optimizers = {
+    "Adam": tf.keras.optimizers.Adam(),
+    "SGD": tf.keras.optimizers.SGD()
+}
+
+histories = {}
+
+for opt_name, optimizer in optimizers.items():
+    print(f"\nTraining model with {opt_name} optimizer...")
+    
+    model = create_model()
+    model.compile(optimizer=optimizer,
+                  loss='sparse_categorical_crossentropy',
+                  metrics=['accuracy'])
+    
+    history = model.fit(x_train, y_train, epochs=10, validation_data=(x_test, y_test), verbose=1)
+    histories[opt_name] = history
+
+# Step 4: Plot Accuracy Comparison
+plt.figure(figsize=(8, 5))
+
+for opt_name, history in histories.items():
+    plt.plot(history.history['val_accuracy'], label=f'Validation Accuracy ({opt_name})')
+
+plt.xlabel('Epochs')
+plt.ylabel('Validation Accuracy')
+plt.title('Adam vs. SGD Performance on MNIST')
+plt.legend()
+plt.show()
