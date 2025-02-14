@@ -1,0 +1,34 @@
+import tensorflow as tf
+
+# 1. Create a random tensor of shape (4, 6)
+tensor = tf.random.uniform((4, 6))
+
+# 2. Find its rank and shape
+rank = tf.rank(tensor)
+shape = tf.shape(tensor)
+
+print(f"Original tensor rank: {rank.numpy()}")
+print(f"Original tensor shape: {shape.numpy()}")
+
+# 3. Reshape it into (2, 3, 4) and transpose it to (3, 2, 4)
+reshaped_tensor = tf.reshape(tensor, (2, 3, 4))
+transposed_tensor = tf.transpose(reshaped_tensor, perm=[1, 0, 2])
+
+print(f"Reshaped tensor shape: {reshaped_tensor.shape}")
+print(f"Transposed tensor shape: {transposed_tensor.shape}")
+
+# 4. Broadcasting a smaller tensor (1, 4) to match and add
+small_tensor = tf.random.uniform((1, 4))
+broadcasted_tensor = small_tensor + tf.zeros_like(transposed_tensor)
+
+print(f"Broadcasted tensor shape: {broadcasted_tensor.shape}")
+
+# 5. Explanation of broadcasting in TensorFlow
+explanation = """
+Broadcasting in TensorFlow allows smaller tensors to be automatically expanded to match the shape 
+of larger tensors when performing element-wise operations. TensorFlow follows these rules:
+1. If the dimensions of the two tensors match or one of them is 1, broadcasting is possible.
+2. The smaller tensor is virtually replicated across the mismatched dimensions.
+3. This avoids unnecessary memory usage while ensuring element-wise operations can be performed.
+"""
+print(explanation)
