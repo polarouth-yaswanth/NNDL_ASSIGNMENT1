@@ -1,0 +1,48 @@
+
+ 1Q)	What patterns do you observe in the training and validation accuracy curves?
+ Smooth and Steady Increase (Ideal Training)
+
+📈 Pattern:
+
+Both training and validation accuracy increase steadily.
+The validation accuracy closely follows the training accuracy.
+The loss consistently decreases.
+✅ Interpretation:
+
+The model is learning properly and generalizing well to unseen data.
+Scenario 2: Overfitting
+
+⚠ Pattern:
+
+Training accuracy keeps increasing, reaching near 100%.
+Validation accuracy plateaus or even decreases after a few epochs.
+Validation loss starts increasing while training loss keeps decreasing.
+
+2Q)	How can you use TensorBoard to detect overfitting?
+TensorBoard provides multiple ways to detect overfitting:
+
+Ans:
+1. Compare Training vs. Validation Accuracy
+
+If training accuracy is high (e.g., 99%) but validation accuracy is low (e.g., 70%), the model is overfitting.
+2. Monitor Loss Graphs
+
+If training loss decreases but validation loss increases, overfitting is happening.
+
+
+
+3Q)	What happens when you increase the number of epochs?
+Ans:Model Continues to Improve (Good Training)
+
+✅ If the dataset is complex and the model is not overfitting, more epochs will:
+
+Increase accuracy steadily.
+Decrease loss continuously.
+
+Overfitting Occurs (Too Many Epochs)
+
+🚨 If the model is too complex, more epochs will:
+
+Increase training accuracy (close to 100%).
+Validation accuracy stagnates or decreases.
+Validation loss starts rising.
