@@ -1,0 +1,44 @@
+import tensorflow as tf
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Step 1: Define True Values (y_true) and Model Predictions (y_pred)
+# MSE case
+y_true_mse = tf.constant([3.0, -0.5, 2.0, 7.0], dtype=tf.float32)
+y_pred_mse = tf.constant([2.5, 0.0, 2.0, 8.0], dtype=tf.float32)
+
+# Categorical Cross-Entropy (CCE) case
+y_true_cce = tf.constant([[0, 1, 0], [1, 0, 0], [0, 0, 1]], dtype=tf.float32)
+y_pred_cce = tf.constant([[0.05, 0.9, 0.05], [0.8, 0.1, 0.1], [0.1, 0.2, 0.7]], dtype=tf.float32)
+
+# Step 2: Compute Initial Loss Values
+mse_loss = tf.keras.losses.MeanSquaredError()
+cce_loss = tf.keras.losses.CategoricalCrossentropy()
+
+mse_value = mse_loss(y_true_mse, y_pred_mse)
+cce_value = cce_loss(y_true_cce, y_pred_cce)
+
+print(f"Initial MSE Loss: {mse_value.numpy():.4f}")
+print(f"Initial Categorical Cross-Entropy Loss: {cce_value.numpy():.4f}")
+
+# Step 3: Modify Predictions Slightly
+y_pred_mse_modified = tf.constant([2.7, -0.2, 2.1, 7.5], dtype=tf.float32)
+y_pred_cce_modified = tf.constant([[0.1, 0.8, 0.1], [0.7, 0.2, 0.1], [0.2, 0.2, 0.6]], dtype=tf.float32)
+
+# Compute new loss values after modifying predictions
+mse_value_modified = mse_loss(y_true_mse, y_pred_mse_modified)
+cce_value_modified = cce_loss(y_true_cce, y_pred_cce_modified)
+
+print(f"Modified MSE Loss: {mse_value_modified.numpy():.4f}")
+print(f"Modified Categorical Cross-Entropy Loss: {cce_value_modified.numpy():.4f}")
+
+# Step 4: Plot Loss Function Values
+loss_types = ["Initial MSE", "Modified MSE", "Initial CCE", "Modified CCE"]
+loss_values = [mse_value.numpy(), mse_value_modified.numpy(), cce_value.numpy(), cce_value_modified.numpy()]
+
+plt.figure(figsize=(8, 5))
+plt.bar(loss_types, loss_values, color=['blue', 'lightblue', 'red', 'pink'])
+plt.xlabel("Loss Type")
+plt.ylabel("Loss Value")
+plt.title("Comparison of Loss Function Values")
+plt.show()
