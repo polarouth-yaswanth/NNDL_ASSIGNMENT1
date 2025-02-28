@@ -1,0 +1,22 @@
+Question 2:
+
+Perform convolution on a 5×5 input matrix using a 3×3 kernel with different parameters:
+
+Stride 1, Padding 'VALID': No padding, moves 1 step.
+Stride 1, Padding 'SAME': Pads to maintain size.
+Stride 2, Padding 'VALID': No padding, moves 2 steps.
+Stride 2, Padding 'SAME': Pads, moves 2 steps.
+Prints feature maps for each case.
+
+
+Question 3:
+
+Edge Detection: Load a grayscale image and apply Sobel filters to detect edges in x and y directions.
+Pooling Operations: Generate a random 4×4 matrix and apply 2×2 Max and Average Pooling, printing the results.
+
+Question 4:
+
+Implement and compare two CNN architectures:
+
+AlexNet: Build a simplified AlexNet with convolution, max pooling, dropout, and dense layers. Print the model summary.
+ResNet-like Model: Define a residual block with skip connections, use it in a simple ResNet with two blocks, and print the model summary.
