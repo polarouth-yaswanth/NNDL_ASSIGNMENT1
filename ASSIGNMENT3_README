@@ -1,0 +1,52 @@
+Q1:
+
+Load Data → Get MNIST images, normalize them (0-1), and flatten to 784 dimensions.
+Build Autoencoder →
+Encoder: Compresses input (784 → 32).
+Decoder: Reconstructs it back (32 → 784).
+Train Model → Uses binary cross-entropy loss to learn how to reconstruct images.
+Test & Visualize → Compare original vs. reconstructed images.
+Change latent_dim (e.g., 16, 64) → Smaller values lose detail; larger ones improve reconstruction.
+
+
+Q2:
+
+Load MNIST Data → Normalize and flatten images.
+Add Gaussian Noise → Injects noise (mean=0, std=0.5) while keeping output as clean images.
+Build Autoencoder → Same structure as before (Encoder: 784 → 32, Decoder: 32 → 784).
+Train Model → Input is noisy images, but output remains clean images.
+Compare Images → Display noisy vs. reconstructed images to assess model performance.
+Real-World Use Case
+Medical Imaging → Denoising autoencoders can remove noise from X-rays or MRI scans, improving clarity for doctors while reducing the need for repeated scans.
+
+
+Q3:
+
+
+Load Text → Downloaded and read Shakespeare’s text, converted it to lowercase.
+Prepare Sequences → Created sequences of 40 characters, where the model learns to predict the 41st character.
+One-hot Encoding → Converted characters to vectors for training.
+LSTM Model → Used an LSTM layer to learn text patterns and a Dense layer to predict the next character.
+Text Generation → Given a seed, the model predicts characters one by one using a sampling function.
+Temperature Scaling in Text Generation
+Temperature controls randomness in predictions:
+Low temp (e.g., 0.2) → Safer, more predictable text.
+High temp (e.g., 1.0 or more) → More creative but riskier outputs.
+It adjusts the softmax output, making the model either more confident or more exploratory.
+
+
+
+Q4:
+
+Load IMDB dataset → 25,000 positive & 25,000 negative reviews.
+Tokenize & Pad → Convert reviews to integers and make them same length (200).
+LSTM Model → Embedding layer → LSTM → Sigmoid (for binary output).
+Train Model → Trains for 3 epochs, validates on 20% of training data.
+Evaluate → Predicts on test set and outputs confusion matrix & classification report.
+Precision-Recall Tradeoff
+Precision → How many predicted positives are actually positive.
+Recall → How many actual positives were correctly predicted.
+In sentiment analysis:
+High precision avoids mislabeling negative reviews as positive.
+High recall ensures all positive reviews are captured.
+Tradeoff is key when false positives or false negatives are more costly (e.g., filtering harmful content).
