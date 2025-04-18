@@ -1,0 +1,11 @@
+Q1: NLP Preprocessing
+Implemented an NLP pipeline using spaCy to tokenize, remove stopwords, and lemmatize a sentence. Explained stemming vs lemmatization and stopword impact in NLP tasks.
+
+Q2: Named Entity Recognition (NER)
+Used spaCy to extract named entities from a sentence, showing entity text, type, and positions. Clarified NER vs POS tagging and real-world applications.
+
+Q3: Scaled Dot-Product Attention
+Built a NumPy-based implementation of scaled dot-product attention. Included output weights, final vectors, and discussed scaling and self-attention benefits.
+
+Q4: Sentiment Analysis with Transformers
+Used HuggingFace pipeline to classify sentiment of a sentence with label and confidence. Covered BERT vs GPT architecture and value of pre-trained models.
