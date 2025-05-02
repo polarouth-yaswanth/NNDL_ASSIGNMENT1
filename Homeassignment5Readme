@@ -1,0 +1,46 @@
+Q1: GAN Architecture
+Description:
+Explained the adversarial training process in GANs, where the Generator (G) tries to produce realistic images, and the Discriminator (D) learns to distinguish real from fake data. Both networks improve via competition.
+✅ Q2: Ethics and AI Harm – Allocational Harm
+Real-world Scenario:
+An AI hiring system may reject qualified minority candidates due to biased training data.
+Mitigation Strategies:
+Debias datasets to ensure fair representation.
+Use auditing tools and fairness metrics to track model behavior across demographics.
+✅ Q3: Programming Task – Basic GAN
+Framework Used: PyTorch
+Dataset: MNIST (handwritten digits)
+Components:
+Generator: Fully connected layers mapping random noise to 28x28 images.
+Discriminator: Simple feedforward classifier distinguishing real vs. fake images.
+Training:
+Alternating updates of G and D with BCE loss for 100 epochs.
+Outputs:
+epoch_0.png: Initial noisy samples
+epoch_50.png: Improved digit images
+epoch_100.png: Clear digit generation
+gan_loss_plot.png: Generator and Discriminator loss curves
+✅ Q4: Programming Task – Data Poisoning Simulation
+Task:
+Simulated a label-flipping attack on a sentiment classifier trained on movie reviews.
+Steps:
+Trained Logistic Regression on clean data
+Introduced poisoned samples flipping sentiment of phrases like "UC Berkeley"
+Compared performance before and after poisoning
+Outputs:
+Confusion matrices: poisoning_effect.png
+Accuracy drop observed after poisoning
+✅ Q5: Legal and Ethical Implications of GenAI
+Concerns Discussed:
+Memorization of private data (e.g., names in GPT-2)
+Reproduction of copyrighted works (e.g., Harry Potter)
+My View:
+Generative AI models should be restricted from training on private or copyrighted data without consent. This ensures user privacy and legal compliance while building responsible AI.
+✅ Q6: Bias & Fairness Tools – False Negative Rate Parity
+Metric: False Negative Rate Parity
+Explanation:
+Measures whether different groups have equal false negative rates (e.g., loan denied wrongly).
+Importance:
+Critical to prevent systemic disadvantages in decision-making systems (e.g., finance, healthcare).
+Potential Failure:
+A model might under-predict for a minority group, leading to unequal false negative rates and unfair treatment.
